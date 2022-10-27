@@ -6,6 +6,7 @@ Class FileStorage for JSON serialization and deserialization
 import json
 import os
 
+
 class FileStorage:
     """
     Class FileStorage that serializes instances to a JSON file and
@@ -24,7 +25,7 @@ class FileStorage:
     def new(self, obj):
         """
         Sets in __objects the obj with key <obj class name>.id
-        
+
         Args:
             - obj: object to convert in dictionary
         """
@@ -37,9 +38,8 @@ class FileStorage:
         """
 
         with open(FileStorage.__file_path, "w+", encoding="UTF-8") as file:
-            dic = {k : v.to_dict() for k, v in FileStorage.__object.items()}
+            dic = {k: v.to_dict() for k, v in FileStorage.__object.items()}
             json.dump(dic, file)
-        
 
     def reload(self):
         """
@@ -50,10 +50,10 @@ class FileStorage:
         if not os.path.isfile(FileStorage.__file_path):
             return
         try:
-                with open(FileStorage.__file_path) as file:
-                    loaded = json.load(file)
-                    for k, v in loaded.items():
-                        obj = eval(v["__class__"])(**v)
-                        FileStorage.__object[k] = obj
+            with open(FileStorage.__file_path) as file:
+                loaded = json.load(file)
+                for k, v in loaded.items():
+                    obj = eval(v["__class__"])(**v)
+                    FileStorage.__object[k] = obj
         except Exception:
             pass

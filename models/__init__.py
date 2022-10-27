@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
 File ``__init__``
 Import Settings
 """
