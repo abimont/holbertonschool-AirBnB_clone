@@ -21,6 +21,7 @@ class BaseModel:
             - args: unused parameter
             - kwargs: each key of this dictionary is an attribute name
         """
+
         if kwargs is not None and len(kwargs) > 0:
             for key, value in kwargs.items():
                 if key != "__class__":
