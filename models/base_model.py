@@ -7,6 +7,7 @@ BaseModel class for command interpreter
 
 from datetime import datetime
 import uuid
+from xmlrpc.client import _iso8601_format
 
 
 class BaseModel:
@@ -14,13 +15,27 @@ class BaseModel:
     Class that defines all common attributes/methods for other classes
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Constructor method
+
+        Args:
+            - args: unused parameter
+            - kwargs: each key of this dictionary is an attribute name
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if kwargs is not None and len(kwargs) > 0:
+            for key, value in kwargs.items():
+                if key != "__class__":
+                    setattr(self, key, value)
+            self.created_at = datetime.strptime(self.created_at,
+                                                '%Y-%m-%dT%H:%M:%S.%f')
+            self.updated_at = datetime.strptime(self.updated_at,
+                                                '%Y-%m-%dT%H:%M:%S.%f')
+
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """
