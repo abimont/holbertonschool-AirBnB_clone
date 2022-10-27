@@ -30,3 +30,9 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn("__class__", self.instanceOne.to_dict())
         self.assertIn("created_at", self.instanceOne.to_dict())
         self.assertIn("updated_at", self.instanceOne.to_dict())
+
+    def test_str(self):
+        self.assertIsInstance(self.instanceOne.__str__(), str)
+        self.assertIn(self.instanceOne.id, self.instanceOne.__str__())
+        self.assertIn(type(self.instanceOne).__name__,
+                      self.instanceOne.__str__())
