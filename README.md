@@ -15,7 +15,7 @@ The first piece is to manipulate a powerful storage system. This storage engine 
 
 This abstraction will also allow us to change the type of storage easily without updating all of our codebase. The console will be a tool to validate this storage engine.
 
-![Flowchart](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU5BHMTQX4%2F20221028%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221028T214029Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=bd8ee4dbcb71f74bd66d5d9d60774b97cec0a90baa27b9e3f2ca085fd7467e50)
+<p align="center"> <img src="https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU5BHMTQX4%2F20221028%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221028T214029Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=bd8ee4dbcb71f74bd66d5d9d60774b97cec0a90baa27b9e3f2ca085fd7467e50"/> </p>
 
 The command interpreter will be developed in the following way:
 
