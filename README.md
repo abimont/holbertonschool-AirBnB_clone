@@ -1,5 +1,5 @@
 # AirBnB clone - The console
-![Hbnb](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU5BHMTQX4%2F20221028%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221028T205046Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=1757e9759f857138679ac1675065f42e29c8552f7c877a763a43a4df4e1a5481)
+<p align="center"> <img src="https://cdn.pixabay.com/photo/2013/07/13/13/41/bash-161382__340.png"/> </p>
 
 ### Command interpreter to manage the AirBnB clone objects.
 
