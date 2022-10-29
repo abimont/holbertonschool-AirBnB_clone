@@ -14,13 +14,13 @@ class FileStorage:
     """
 
     __file_path = 'file.json'
-    __object = {}
+    __objects = {}
 
     def all(self):
         """
         Returns the dictionary __objects
         """
-        return FileStorage.__object
+        return FileStorage.__objects
 
     def new(self, obj):
         """
@@ -31,7 +31,7 @@ class FileStorage:
         """
 
         key = obj.__class__.__name__ + "." + obj.id
-        FileStorage.__object[key] = obj
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """"
@@ -39,7 +39,7 @@ class FileStorage:
         """
 
         with open(FileStorage.__file_path, "w", encoding="UTF-8") as file:
-            dic = {k: v.to_dict() for k, v in FileStorage.__object.items()}
+            dic = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
             json.dump(dic, file, indent=4)
 
     def reload(self):
@@ -53,6 +53,6 @@ class FileStorage:
                 loaded = json.load(file)
                 for k, v in loaded.items():
                     obj = eval(v["__class__"])(**v)
-                    FileStorage.__object[k] = obj
+                    FileStorage.__objects[k] = obj
         else:
             return
