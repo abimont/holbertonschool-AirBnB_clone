@@ -15,9 +15,8 @@ class TestFileStorage(unittest.TestCase):
     """
 
     def test_file_storage(self):
-        all_objs = storage.all()
-        self.assertIsInstance(all_objs, dict)
-        self.assertEqual(len(all_objs), 0)
+        dicOne = FileStorage.all(self)
+        self.assertIsInstance(dicOne, dict)
+        self.assertEqual(len(dicOne), 0)
         instanceBase = BaseModel()
-        instanceBase.save()
-        self.assertGreater(len(all_objs), 0)
+        self.assertGreater(len(dicOne), 0)
