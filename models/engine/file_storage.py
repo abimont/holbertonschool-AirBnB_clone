@@ -30,16 +30,17 @@ class FileStorage:
             - obj: object to convert in dictionary
         """
 
-        FileStorage.__object[type(obj).__name__ + "." + obj.id] = obj
+        key = obj.__class__.__name__ + "." + obj.id
+        FileStorage.__object[key] = obj
 
     def save(self):
         """"
         Serializes __objects to the JSON file (path: __file_path)
         """
 
-        with open(FileStorage.__file_path, "w+", encoding="UTF-8") as file:
+        with open(FileStorage.__file_path, "w", encoding="UTF-8") as file:
             dic = {k: v.to_dict() for k, v in FileStorage.__object.items()}
-            json.dump(dic, file)
+            json.dump(dic, file, indent=4)
 
     def reload(self):
         """
@@ -47,13 +48,11 @@ class FileStorage:
         the JSON file (__file_path) exists otherwise, do nothing
         """
         from models.base_model import BaseModel
-        if not os.path.isfile(FileStorage.__file_path):
-            return
-        try:
+        if os.path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path) as file:
                 loaded = json.load(file)
                 for k, v in loaded.items():
                     obj = eval(v["__class__"])(**v)
                     FileStorage.__object[k] = obj
-        except Exception:
-            pass
+        else:
+            return
