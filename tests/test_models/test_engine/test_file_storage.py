@@ -15,8 +15,20 @@ class TestFileStorage(unittest.TestCase):
     """
 
     def test_file_storage(self):
+        """
+        Testing FileStorage methods
+        """
         dicOne = FileStorage.all(self)
         self.assertIsInstance(dicOne, dict)
         self.assertEqual(len(dicOne), 0)
         instanceBase = BaseModel()
         self.assertGreater(len(dicOne), 0)
+
+    def test_object(self):
+        """
+        Testing FileStorage attributes
+        """
+        instance = FileStorage()
+        with self.assertRaises(AttributeError):
+            instance.__objects
+            instance.__file_path
