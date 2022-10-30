@@ -20,7 +20,7 @@ class FileStorage:
         """
         Returns the dictionary __objects
         """
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
         """
@@ -31,7 +31,7 @@ class FileStorage:
         """
 
         key = obj.__class__.__name__ + "." + obj.id
-        FileStorage.__objects[key] = obj
+        self.__objects[key] = obj
 
     def save(self):
         """"
@@ -53,6 +53,6 @@ class FileStorage:
                 loaded = json.load(file)
                 for k, v in loaded.items():
                     obj = eval(v["__class__"])(**v)
-                    FileStorage.__objects[k] = obj
+                    self.__objects[k] = obj
         else:
             return
