@@ -3,8 +3,11 @@
 Module ``test_base_model``
 Tests for BaseModel class
 """
+import json
+import os
 import unittest
 from models.base_model import BaseModel
+from models import storage
 
 
 class TestBaseModel(unittest.TestCase):
@@ -27,10 +30,14 @@ class TestBaseModel(unittest.TestCase):
             - updated_at attribute
         """
 
-        firstUpdate = self.instanceOne.updated_at
-        self.instanceOne.save()
-        secondUpdate = self.instanceOne.updated_at
-        self.assertNotEqual(firstUpdate, secondUpdate)
+        storage.all().clear()
+        instanceBM = BaseModel()
+        instanceBM.save()
+        with open('file.json') as file:
+            loaded = json.loads(file.read())
+        self.assertDictEqual(
+            loaded, {f'BaseModel.{instanceBM.id}': instanceBM.to_dict()})
+        os.remove('file.json')
 
     def test_id(self):
         """
