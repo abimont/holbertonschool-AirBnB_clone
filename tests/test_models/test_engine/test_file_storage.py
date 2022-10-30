@@ -22,8 +22,16 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsInstance(dicOne, dict)
         self.assertEqual(len(dicOne), 0)
         instanceBase = BaseModel()
-        instanceBase.save()
         self.assertGreater(len(dicOne), 0)
+
+    def test_save(self):
+        """
+        Provisional test
+        """
+        instanceBM = BaseModel()
+        instanceFS = FileStorage()
+        self.assertEqual(instanceBM.save(), None)
+        self.assertEqual(instanceFS.reload(), None)
 
     def test_object(self):
         """
