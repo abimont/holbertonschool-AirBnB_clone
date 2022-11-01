@@ -4,9 +4,7 @@ Module ``test_user``
 Tests for User class
 """
 import unittest
-import os
 from models.user import User
-from models.engine.file_storage import FileStorage
 
 
 class TestUser(unittest.TestCase):
