@@ -6,6 +6,7 @@ Class HBNBCommand that creates the console.
 import cmd
 from models.base_model import BaseModel
 import models
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -13,6 +14,7 @@ class HBNBCommand(cmd.Cmd):
     Class that contains the entry point of the command interpreter.
     """
     prompt = '(hbnb) '
+    classes = ['BaseModel', 'User']
 
     def do_quit(self, line):
         """
@@ -43,11 +45,14 @@ class HBNBCommand(cmd.Cmd):
             return False
         elif line == "BaseModel":
             instance = BaseModel()
-            instance.save()
-            print(instance.id)
+        elif line == "User":
+            instance = User()
         else:
             print("** class doesn't exist **")
             return False
+
+        instance.save()
+        print(instance.id)
 
     def do_show(self, line):
         """
@@ -66,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
 
         instanceName, instanceId, *otherArgs = myList
 
-        if instanceName != "BaseModel":
+        if instanceName not in self.classes:
             print("** class doesn't exist **")
             return False
 
@@ -93,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
             return False
 
         instanceName, instanceId, *otherArgs = myList
-        if instanceName != "BaseModel":
+        if instanceName not in self.classes:
             print("** class doesn't exist **")
             return False
 
@@ -113,10 +118,10 @@ class HBNBCommand(cmd.Cmd):
 
         myDict = models.storage.all()
         if line:
-            if line != "BaseModel":
+            if line not in self.classes:
                 print("** class doesn't exist **")
                 return False
-            elif line == "BaseModel":
+            else:
                 for k, v in myDict.items():
                     if k.split('.')[0] == line:
                         print([str(v)])
@@ -147,7 +152,7 @@ class HBNBCommand(cmd.Cmd):
             return False
 
         instName, instId, instAttr, instVal, *otherArgs = myList
-        if instName != "BaseModel":
+        if instName not in self.classes:
             print("** class doesn't exist **")
             return False
 
