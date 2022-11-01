@@ -18,17 +18,9 @@ class TestUser(unittest.TestCase):
         """
         Testing user attributes
         """
-        storage = FileStorage()
+
         instUser = User()
-        instUser.first_name = "Betty"
-        instUser.last_name = "Bar"
-        instUser.email = "airbnb@mail.com"
-        instUser.password = "root"
-        instUser.save()
-        val = storage.all().get(f'User.{instUser.id}')
-        self.assertEqual(val.__dict__['first_name'], instUser.first_name)
-        self.assertEqual(val.__dict__['last_name'], instUser.last_name)
-        self.assertEqual(val.__dict__['email'], instUser.email)
-        self.assertEqual(val.__dict__['password'], instUser.password)
-        storage.all().clear()
-        os.remove('file.json')
+        self.assertEqual(instUser.first_name, "")
+        self.assertEqual(instUser.last_name, "")
+        self.assertEqual(instUser.email, "")
+        self.assertEqual(instUser.password, "")
