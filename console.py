@@ -7,6 +7,11 @@ import cmd
 from models.base_model import BaseModel
 import models
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.review import Review
+from models.city import City
+from models.amenity import Amenity
 
 
 class HBNBCommand(cmd.Cmd):
@@ -14,7 +19,8 @@ class HBNBCommand(cmd.Cmd):
     Class that contains the entry point of the command interpreter.
     """
     prompt = '(hbnb) '
-    classes = ['BaseModel', 'User']
+    classes = ['BaseModel', 'User', 'Place',
+               'City', 'Amenity', 'State', 'Review']
 
     def do_quit(self, line):
         """
@@ -47,6 +53,16 @@ class HBNBCommand(cmd.Cmd):
             instance = BaseModel()
         elif line == "User":
             instance = User()
+        elif line == "City":
+            instance = City()
+        elif line == "Place":
+            instance = Place()
+        elif line == "Amenity":
+            instance = Amenity()
+        elif line == "State":
+            instance = State()
+        elif line == "Review":
+            instance = Review()
         else:
             print("** class doesn't exist **")
             return False
