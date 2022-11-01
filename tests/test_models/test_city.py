@@ -9,7 +9,7 @@ import unittest
 from models.city import City
 
 
-class TestState(unittest.TestCase):
+class TestCity(unittest.TestCase):
     """
     Test class for City
     """
