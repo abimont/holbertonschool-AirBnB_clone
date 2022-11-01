@@ -48,6 +48,7 @@ class FileStorage:
         the JSON file (__file_path) exists otherwise, do nothing
         """
         from models.base_model import BaseModel
+        from models.user import User
         if os.path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path) as file:
                 loaded = json.load(file)
